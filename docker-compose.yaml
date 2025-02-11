@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+    telobase:
+        container_name: telobase
+        image: shinyapps
+        environment:
+            - SMTP_HOST=${SMTP_HOST}
+            - SMTP_PORT=${SMTP_PORT}
+            - SMTP_USER=${SMTP_USER}
+            - SMTP_PASS=${SMTP_PASS}
+        command: ['R', '-e', 'shiny::runApp("/srv/shiny-server/TeloBase", host="0.0.0.0", port=80)']
+
+    scantointensity:
+        container_name: scantointensity
+        image: shinyapps
+        command: ['R', '-e', 'shiny::runApp("/srv/shiny-server/ScanToIntensity", host="0.0.0.0", port=80)']
+
+    intensityanalyser:
+        container_name: intensityanalyser
+        image: shinyapps
+        command: ['R', '-e', 'shiny::runApp("/srv/shiny-server/IntensityAnalyser", host="0.0.0.0", port=80)']
+
+    nginx:
+        image: nginx:latest
+        container_name: nginx_proxy
+        ports:
+            - '8080:80'
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf:Z
+            - ./shiny-app-common.conf:/etc/nginx/shiny-app-common.conf:Z
+        depends_on:
+            - telobase
+            - intensityanalyser
+            - scantointensity
