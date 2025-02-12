@@ -27,6 +27,7 @@ services:
         volumes:
             - ./nginx.conf:/etc/nginx/nginx.conf:Z
             - ./shiny-app-common.conf:/etc/nginx/shiny-app-common.conf:Z
+            - ./index.html:/usr/share/nginx/html/index.html:Z
         depends_on:
             - telobase
             - intensityanalyser
