@@ -67,7 +67,7 @@ dashboardPage(
             htmlOutput("number_unique_species"),
             plotlyOutput("about_tab_plot", height = '100%'),
             br(),
-            "It should be noted that in some species telomeres have a high degree of sequence heterogeneity which is not addressed in the databse with a consensus sequence, instead all identified variations of these sequences are shown.",
+            "It should be noted that in some species telomeres have a high degree of sequence heterogeneity which is not addressed in the database with a consensus sequence, instead all identified variations of these sequences are shown.",
             br(),
             br(),
             "The curation of new sequences is peer-reviewed by current members of the TeloBase community. To join the TeloBase community, you need to
