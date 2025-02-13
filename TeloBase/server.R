@@ -710,7 +710,6 @@ shinyServer(function(input, output, session) {
           ),
 
           chooseSliderSkin("Flat"),
-          setSliderColor(c("#0073b6", "#dd4c39"), c(1, 2)),
           sliderInput("FTANS_slider", "FTANS", value = c(0, 100), min = 0, max = 100),
           sliderInput("FTELS_slider", "FTELS", value = c(0, 100), min = 0, max = 100)
 
