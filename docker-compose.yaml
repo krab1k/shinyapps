@@ -8,16 +8,19 @@ services:
             - SMTP_USER=${SMTP_USER}
             - SMTP_PASS=${SMTP_PASS}
         command: ['R', '-e', 'shiny::runApp("/srv/shiny-server/TeloBase", host="0.0.0.0", port=80)']
+        restart: always
 
     scantointensity:
         container_name: scantointensity
         image: shinyapps
         command: ['R', '-e', 'shiny::runApp("/srv/shiny-server/ScanToIntensity", host="0.0.0.0", port=80)']
+        restart: always
 
     intensityanalyser:
         container_name: intensityanalyser
         image: shinyapps
         command: ['R', '-e', 'shiny::runApp("/srv/shiny-server/IntensityAnalyser", host="0.0.0.0", port=80)']
+        restart: always
 
     nginx:
         image: nginx:latest
@@ -32,3 +35,4 @@ services:
             - telobase
             - intensityanalyser
             - scantointensity
+        restart: always
